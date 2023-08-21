@@ -35,7 +35,7 @@
             class="form-control"
             formControlName="email"
             placeholder="Email del usuario"
-            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
+            [ngClass]="isValidField('email') ? 'bg-warning' : ''"
           />
           <span *ngIf="isValidField('email')" class="form-text text-danger">
             mensaje de error del email
@@ -54,7 +54,7 @@
             class="form-control"
             formControlName="username"
             placeholder="Nombre código del usuario"
-            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
+            [ngClass]="isValidField('username') ? 'bg-warning' : ''"
           />
           <span *ngIf="isValidField('username')" class="form-text text-danger">
             El username no puede ser Strider
@@ -73,7 +73,7 @@
             class="form-control"
             formControlName="password"
             placeholder="Password de su cuenta"
-            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
+            [ngClass]="isValidField('password') ? 'bg-warning' : ''"
           />
 
           <span *ngIf="isValidField('password')" class="form-text text-danger">
@@ -93,7 +93,7 @@
             class="form-control"
             formControlName="password2"
             placeholder="Confirmar la contraseña"
-            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
+            [ngClass]="isValidField('password2') ? 'bg-warning' : ''"
           />
 
           <span *ngIf="isValidField('password2')" class="form-text text-danger">
