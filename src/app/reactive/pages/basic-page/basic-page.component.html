@@ -1,4 +1,4 @@
-<h2>Reactivos: Básicos</h2>
+<h2 class="text-success-emphasis">Reactivos: <small>Básicos</small></h2>
 <hr />
 
 <div class="row">
@@ -6,13 +6,16 @@
     <form [formGroup]="myForm" (ngSubmit)="onSave()" autocomplete="off">
       <!-- Campo de producto -->
       <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Producto</label>
+        <label class="col-sm-3 col-form-label text-white"
+          ><strong>Producto:</strong></label
+        >
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control"
             formControlName="name"
             placeholder="Nombre del producto"
+            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
           />
 
           <span *ngIf="isValidField('name')" class="form-text text-danger">
@@ -23,13 +26,16 @@
 
       <!-- Campo de producto -->
       <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Precio</label>
+        <label class="col-sm-3 col-form-label text-white"
+          ><strong>Precio:</strong></label
+        >
         <div class="col-sm-9">
           <input
             type="number"
             class="form-control"
             formControlName="price"
             placeholder="Precio del producto"
+            [ngClass]="isValidField('price') ? 'bg-warning' : ''"
           />
           <span *ngIf="isValidField('price')" class="form-text text-danger">
             El precio debe de ser 0 o mayor
@@ -39,13 +45,16 @@
 
       <!-- Campo de existencias -->
       <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Existencias</label>
+        <label class="col-sm-3 col-form-label text-white"
+          ><strong>Existencias:</strong></label
+        >
         <div class="col-sm-9">
           <input
             type="number"
             class="form-control"
             formControlName="inStorage"
             placeholder="Existencias del producto"
+            [ngClass]="isValidField('inStorage') ? 'bg-warning' : ''"
           />
 
           <span *ngIf="isValidField('inStorage')" class="form-text text-danger">
@@ -67,28 +76,50 @@
 
 <div class="row">
   <div class="col">
-    <span>Valid</span>
-    <pre>{{ myForm.valid | json }}</pre>
+    <h4>Valid</h4>
+    <pre
+      [ngClass]="myForm.valid ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.valid | json }}</pre
+    >
 
-    <span>Pristine</span>
-    <pre>{{ myForm.pristine | json }}</pre>
+    <h4>Pristine</h4>
+    <pre
+      [ngClass]="myForm.pristine ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.pristine | json }}</pre
+    >
 
-    <span>Touched</span>
-    <pre>{{ myForm.touched | json }}</pre>
+    <h4>Touched</h4>
+    <pre
+      [ngClass]="myForm.touched ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.touched | json }}</pre
+    >
 
-    <span>Value</span>
-    <pre>{{ myForm.value | json }}</pre>
+    <h4>Value</h4>
+    <pre
+      [ngClass]="myForm.valid ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.valid | json }}</pre
+    >
+  </div>
 
-    <span>Precio</span>
-    <pre>{{ myForm.controls["price"].value | json }}</pre>
+  <div class="col">
+    <h4>Precio</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["price"].value | json
+    }}</pre>
 
-    <span>Precio - Errors</span>
-    <pre>{{ myForm.controls["price"].errors | json }}</pre>
+    <h4>Precio - Errors</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["price"].errors | json
+    }}</pre>
 
-    <span>Producto</span>
-    <pre>{{ myForm.controls["name"].value | json }}</pre>
+    <h4>Producto</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["name"].value | json
+    }}</pre>
 
-    <span>Producto - Errors</span>
-    <pre>{{ myForm.controls["name"].errors | json }}</pre>
+    <h4>Producto - Errors</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["name"].errors | json
+    }}</pre>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<h2>Validaciones Reactivas</h2>
+<h2 class="text-success-emphasis">Validaciones Reactivas</h2>
 <hr />
 
 <div class="row">
@@ -6,13 +6,16 @@
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
       <!-- Nombre -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Nombre</label>
+        <label class="col-sm-3 col-form-label text-white"
+          ><strong>Nombre:</strong></label
+        >
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control"
             formControlName="name"
             placeholder="Nombre del usuario"
+            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
           />
 
           <span *ngIf="isValidField('name')" class="form-text text-danger">
@@ -23,13 +26,16 @@
 
       <!-- Email -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Email</label>
+        <label class="col-sm-3 col-form-label text-white"
+          ><strong>Email:</strong></label
+        >
         <div class="col-sm-9">
           <input
             type="email"
             class="form-control"
             formControlName="email"
             placeholder="Email del usuario"
+            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
           />
           <span *ngIf="isValidField('email')" class="form-text text-danger">
             mensaje de error del email
@@ -39,13 +45,16 @@
 
       <!-- Username -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Username</label>
+        <label class="col-sm-3 col-form-label text-white"
+          ><strong>Username:</strong></label
+        >
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control"
             formControlName="username"
             placeholder="Nombre código del usuario"
+            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
           />
           <span *ngIf="isValidField('username')" class="form-text text-danger">
             El username no puede ser Strider
@@ -55,13 +64,16 @@
 
       <!-- Password -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Password</label>
+        <label class="col-sm-3 col-form-label text-white"
+          ><strong>Password:</strong></label
+        >
         <div class="col-sm-9">
           <input
             type="password"
             class="form-control"
             formControlName="password"
             placeholder="Password de su cuenta"
+            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
           />
 
           <span *ngIf="isValidField('password')" class="form-text text-danger">
@@ -72,13 +84,16 @@
 
       <!-- Password2 -->
       <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Confirmar</label>
+        <label class="col-sm-3 col-form-label text-white"
+          ><strong>Confirmar:</strong></label
+        >
         <div class="col-sm-9">
           <input
             type="password"
             class="form-control"
             formControlName="password2"
             placeholder="Confirmar la contraseña"
+            [ngClass]="isValidField('name') ? 'bg-warning' : ''"
           />
 
           <span *ngIf="isValidField('password2')" class="form-text text-danger">
@@ -96,23 +111,58 @@
   </div>
 </div>
 
-<h2>Form Valid: {{ myForm.valid }}</h2>
-<h2>Form Status: {{ myForm.status }}</h2>
-<h2>Form Pending: {{ myForm.pending }}</h2>
-<h2>Form errors</h2>
-<pre>{{ myForm.errors | json }}</pre>
+<div class="row">
+  <div class="col">
+    <h4>Form Valid:</h4>
+    <pre
+      [ngClass]="myForm.valid ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.valid }}</pre
+    >
 
-<h5>Nombre</h5>
-<pre>{{ myForm.controls["name"].errors | json }}</pre>
+    <h4>Form Status:</h4>
+    <pre
+      [ngClass]="myForm.status ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.status }}</pre
+    >
 
-<h5>Email</h5>
-<pre>{{ myForm.controls["email"].errors | json }}</pre>
+    <h4>Form Pending:</h4>
+    <pre
+      [ngClass]="myForm.pending ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.pending }}</pre
+    >
 
-<h5>Username</h5>
-<pre>{{ myForm.controls["username"].errors | json }}</pre>
+    <h4>Form errors</h4>
+    <pre
+      [ngClass]="myForm.errors ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.errors | json }}</pre
+    >
+  </div>
+  <div class="col">
+    <h4>Nombre</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["name"].errors | json
+    }}</pre>
 
-<h5>Password</h5>
-<pre>{{ myForm.controls["password"].errors | json }}</pre>
+    <h4>Email</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["email"].errors | json
+    }}</pre>
+  </div>
 
-<h5>Confirmar</h5>
-<pre>{{ myForm.controls["password2"].errors | json }}</pre>
+  <div class="col">
+    <h4>Username</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["username"].errors | json
+    }}</pre>
+
+    <h4>Password</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["password"].errors | json
+    }}</pre>
+
+    <h4>Confirmar</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["password2"].errors | json
+    }}</pre>
+  </div>
+</div>

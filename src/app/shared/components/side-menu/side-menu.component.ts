@@ -8,7 +8,10 @@ interface MenuItem {
 @Component({
   selector: 'shared-side-menu',
   templateUrl: './side-menu.component.html',
-  styles: [],
+  styles: [
+    'li {transition: linear .2s}',
+    'li:hover {background-color: #0d6efd; opacity: 0.65; color: white;}',
+  ],
 })
 export class SideMenuComponent {
   public reactiveMenu: MenuItem[] = [

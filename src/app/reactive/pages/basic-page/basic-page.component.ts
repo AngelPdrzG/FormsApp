@@ -44,10 +44,12 @@ export class BasicPageComponent implements OnInit {
 
     for (const key of Object.keys(errors)) {
       switch (key) {
-        case 'required':
+        case 'required': {
           return 'Este campo es requerido';
-        case 'minLength':
-          return `Minimo ${errors['minLength'].requiredLength} characters`;
+        }
+        case 'minlength': {
+          return `Minimo ${errors['minlength'].requiredLength} characters`;
+        }
       }
     }
 

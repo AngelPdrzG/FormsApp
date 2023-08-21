@@ -1,10 +1,12 @@
-<h2>Reactivos: Switches</h2>
+<h2 class="text-success-emphasis">Reactivos: <small>Switches</small></h2>
 <hr />
 
 <form [formGroup]="myForm" (ngSubmit)="onSave()" autocomplete="off">
   <!-- Radio -->
   <div class="row mb-3">
-    <label class="col-sm-3 col-form-label">Género</label>
+    <label class="col-sm-3 col-form-label text-white"
+      ><strong>Género</strong></label
+    >
     <div class="col-sm-9">
       <div class="form-check">
         <input
@@ -32,7 +34,9 @@
 
   <!-- Switches -->
   <div class="row mb-3">
-    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <label class="col-sm-3 col-form-label text-white"
+      ><strong>Notificaciones</strong></label
+    >
     <div class="col-sm-9">
       <div class="form-check form-switch mt-2">
         <input
@@ -80,19 +84,38 @@
   </div>
 </form>
 
-<h5>Valor del formulario</h5>
-<pre>{{ myForm.value | json }}</pre>
-<br />
+<div class="row">
+  <div class="col">
+    <h4>Valid</h4>
+    <pre
+      [ngClass]="myForm.valid ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.valid | json }}</pre
+    >
 
-<h5>Persona</h5>
-<pre>{{ "object" | json }}</pre>
-<br />
+    <h4>Value</h4>
+    <pre
+      [ngClass]="myForm.valid ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.value | json }}</pre
+    >
+  </div>
 
-<h5>Valid</h5>
-<pre>{{ myForm.valid | json }}</pre>
+  <div class="col">
+    <h4>Persona</h4>
+    <pre class="text-info-emphasis fw-bold">{{ person | json }}</pre>
 
-<!-- <h5>Términos</h5> -->
-<!-- <pre>{{ myForm.controls?.terminos?.errors | json }}</pre> -->
+    <h4>Genero</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["gender"].value | json
+    }}</pre>
 
-<!-- <br>
-<pre>Condiciones: </pre> -->
+    <h4>Notifiaciones</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["wantNotifications"].value | json
+    }}</pre>
+
+    <h4>Term. y Cond.</h4>
+    <pre class="text-info-emphasis fw-bold">{{
+      myForm.controls["termsAndConditions"].value | json
+    }}</pre>
+  </div>
+</div>

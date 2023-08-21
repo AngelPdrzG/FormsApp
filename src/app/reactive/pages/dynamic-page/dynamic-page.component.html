@@ -1,15 +1,18 @@
-<h2>Reactivos: <small> Dinámicos </small></h2>
+<h2 class="text-success-emphasis">Reactivos: <small> Dinámicos </small></h2>
 <hr />
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
   <!-- Nombre -->
   <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Nombre</label>
+    <label class="col-sm-3 col-form-label text-white"
+      ><strong>Nombre</strong></label
+    >
     <div class="col-sm-9">
       <input
         class="form-control"
         formControlName="name"
         placeholder="Nombre de la persona"
+        [ngClass]="isValidField('name') ? 'bg-warning' : ''"
       />
       <span *ngIf="isValidField('name')" class="form-text text-danger">
         {{ getFieldError("name") }}
@@ -19,7 +22,9 @@
 
   <!-- Agregar Favorito -->
   <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Agregar</label>
+    <label class="col-sm-3 col-form-label text-white"
+      ><strong>Agregar</strong></label
+    >
     <div class="col-sm-9">
       <div class="input-group">
         <input
@@ -41,14 +46,22 @@
 
   <!-- Lista de Juegos Favoritos -->
   <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <label class="col-sm-3 col-form-label text-white"
+      ><strong>Favoritos</strong></label
+    >
     <div class="col-sm-9" formArrayName="favouriteGames">
       <div
         class="mb-1"
         *ngFor="let favourite of favouriteGamesControl.controls; let i = index"
       >
         <div class="input-group">
-          <input [formControlName]="i" class="form-control" />
+          <input
+            [formControlName]="i"
+            class="form-control"
+            [ngClass]="
+              isValidFieldInArray(favouriteGamesControl, i) ? 'bg-warning' : ''
+            "
+          />
 
           <button
             class="btn btn-outline-danger"
@@ -78,14 +91,27 @@
   </div>
 </form>
 
-<span>Valid</span>
-<pre>{{ myForm.valid | json }}</pre>
-<br />
+<div class="row">
+  <div class="col">
+    <h4>Valid</h4>
+    <pre
+      [ngClass]="myForm.valid ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.valid | json }}</pre
+    >
+    <br />
 
-<span>Value</span>
-<pre>{{ myForm.value | json }}</pre>
-<br />
+    <h4>Value</h4>
+    <pre
+      [ngClass]="myForm.valid ? 'text-success' : 'text-danger font-italic'"
+      >{{ myForm.valid | json }}</pre
+    >
+  </div>
 
-<span>Agregar Juego</span>
-<pre>{{ newFavorite.valid | json }}</pre>
-<pre>{{ newFavorite.value | json }}</pre>
+  <br />
+
+  <div class="col">
+    <h4>Agregar Juego</h4>
+    <pre class="text-info-emphasis fw-bold">{{ newFavorite.valid | json }}</pre>
+    <pre class="text-info-emphasis fw-bold">{{ newFavorite.value | json }}</pre>
+  </div>
+</div>
